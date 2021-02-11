@@ -1,0 +1,791 @@
+zabbix_export:
+  version: "5.2"
+  date: "2021-02-11T12:55:36Z"
+  groups:
+    - name: Templates/Custom
+  templates:
+    - template: "Template Pagespeed"
+      name: "Template Pagespeed"
+      groups:
+        - name: Templates/Custom
+      applications:
+        - name: psi
+        - name: "Zabbix raw items"
+      items:
+        - name: "cumulative-layout-shift (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.cumulative-layout-shift
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["cumulative-layout-shift"].numericValue'
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "cumulative-layout-shift Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.cumulative-layout-shift.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["cumulative-layout-shift"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "first-contentful-paint (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.first-contentful-paint
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-contentful-paint"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "first-contentful-paint Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.first-contentful-paint.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-contentful-paint"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "first-cpu-idle (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.first-cpu-idle
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-cpu-idle"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "first-cpu-idle Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.first-cpu-idle.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-cpu-idle"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "first-meaningful-paint (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.first-meaningful-paint
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-meaningful-paint"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "first-meaningful-paint Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.first-meaningful-paint.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-meaningful-paint"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "interactive (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.interactive
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.lighthouseResult.audits.interactive.numericValue
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "interactive Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.interactive.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.lighthouseResult.audits.interactive.score
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "largest-contentful-paint (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.largest-contentful-paint
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["largest-contentful-paint"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "largest-contentful-paint Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.largest-contentful-paint.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["largest-contentful-paint"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "PSI {$PAGESPEED_NAME} Desktop"
+          type: HTTP_AGENT
+          key: pagespeed.desktop.raw
+          delay: 15m
+          history: "0"
+          trends: "0"
+          value_type: TEXT
+          applications:
+            - name: "Zabbix raw items"
+          timeout: 30s
+          url: "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
+          query_fields:
+            - name: url
+              value: "{$PAGESPEED_URL}"
+            - name: key
+              value: "{$GOOGLE_API_KEY}"
+            - name: category
+              value: performance
+            - name: strategy
+              value: desktop
+          verify_peer: "YES"
+          verify_host: "YES"
+        - name: "Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.lighthouseResult.categories.performance.score
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+          triggers:
+            - expression: "{avg(4h)}+10<={avg(48h)}"
+              name: "Pagespeed Desktop Score decreased"
+              priority: WARNING
+              manual_close: "YES"
+            - expression: "{avg(1d)}+5<={avg(4w,1w)}"
+              name: "Pagespeed Desktop Score decreased (longterm)"
+              priority: WARNING
+              manual_close: "YES"
+        - name: "server-response-time (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.server-response-time
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["server-response-time"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "speed-index (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.speed-index
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["speed-index"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "speed-index Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.speed-index.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["speed-index"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "total-blocking-time (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.total-blocking-time
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["total-blocking-time"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "total-blocking-time Score (Desktop)"
+          type: DEPENDENT
+          key: pagespeed.desktop.total-blocking-time.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["total-blocking-time"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.desktop.raw
+        - name: "cumulative-layout-shift (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.cumulative-layout-shift
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["cumulative-layout-shift"].numericValue'
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "cumulative-layout-shift Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.cumulative-layout-shift.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["cumulative-layout-shift"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "first-contentful-paint (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.first-contentful-paint
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-contentful-paint"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "first-contentful-paint Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.first-contentful-paint.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-contentful-paint"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "first-cpu-idle (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.first-cpu-idle
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-cpu-idle"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "first-cpu-idle Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.first-cpu-idle.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-cpu-idle"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "first-meaningful-paint (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.first-meaningful-paint
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-meaningful-paint"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "first-meaningful-paint Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.first-meaningful-paint.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["first-meaningful-paint"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "interactive (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.interactive
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.lighthouseResult.audits.interactive.numericValue
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "interactive Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.interactive.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.lighthouseResult.audits.interactive.score
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "largest-contentful-paint (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.largest-contentful-paint
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["largest-contentful-paint"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "largest-contentful-paint Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.largest-contentful-paint.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["largest-contentful-paint"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "PSI {$PAGESPEED_NAME} Mobile"
+          type: HTTP_AGENT
+          key: pagespeed.mobile.raw
+          delay: 15m
+          history: "0"
+          trends: "0"
+          value_type: TEXT
+          applications:
+            - name: "Zabbix raw items"
+          timeout: 30s
+          url: "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
+          query_fields:
+            - name: url
+              value: "{$PAGESPEED_URL}"
+            - name: key
+              value: "{$GOOGLE_API_KEY}"
+            - name: category
+              value: performance
+            - name: strategy
+              value: mobile
+          verify_peer: "YES"
+          verify_host: "YES"
+        - name: "Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - $.lighthouseResult.categories.performance.score
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+          triggers:
+            - expression: "{avg(4h)}+10<={avg(48h)}"
+              name: "Pagespeed Mobile Score decreased"
+              priority: WARNING
+              manual_close: "YES"
+            - expression: "{avg(1d)}+5<={avg(4w,1w)}"
+              name: "Pagespeed Mobile Score decreased (longterm)"
+              priority: WARNING
+              manual_close: "YES"
+        - name: "server-response-time (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.server-response-time
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["server-response-time"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "speed-index (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.speed-index
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["speed-index"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "speed-index Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.speed-index.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["speed-index"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "total-blocking-time (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.total-blocking-time
+          delay: "0"
+          value_type: FLOAT
+          units: s
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["total-blocking-time"].numericValue'
+            - type: MULTIPLIER
+              parameters:
+                - "0.001"
+          master_item:
+            key: pagespeed.mobile.raw
+        - name: "total-blocking-time Score (Mobile)"
+          type: DEPENDENT
+          key: pagespeed.mobile.total-blocking-time.score
+          delay: "0"
+          value_type: FLOAT
+          applications:
+            - name: psi
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.lighthouseResult.audits["total-blocking-time"].score'
+            - type: MULTIPLIER
+              parameters:
+                - "100"
+          master_item:
+            key: pagespeed.mobile.raw
+      macros:
+        - macro: "{$GOOGLE_API_KEY}"
+        - macro: "{$PAGESPEED_NAME}"
+        - macro: "{$PAGESPEED_URL}"
+  graphs:
+    - name: Desktop
+      graph_items:
+        - color: 1A7C11
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.first-contentful-paint
+        - sortorder: "1"
+          color: F63100
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.interactive
+        - sortorder: "2"
+          color: 2774A4
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.largest-contentful-paint
+        - sortorder: "3"
+          color: A54F10
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.speed-index
+        - sortorder: "4"
+          color: FC6EA3
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.total-blocking-time
+    - name: Mobile
+      graph_items:
+        - color: 1A7C11
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.first-contentful-paint
+        - sortorder: "1"
+          color: F63100
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.interactive
+        - sortorder: "2"
+          color: 2774A4
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.largest-contentful-paint
+        - sortorder: "3"
+          color: A54F10
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.speed-index
+        - sortorder: "4"
+          color: FC6EA3
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.total-blocking-time
+    - name: "Score Desktop"
+      graph_items:
+        - color: 1A7C11
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.first-contentful-paint.score
+        - sortorder: "1"
+          color: F63100
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.interactive.score
+        - sortorder: "2"
+          color: 2774A4
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.largest-contentful-paint
+        - sortorder: "3"
+          color: A54F10
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.speed-index.score
+        - sortorder: "4"
+          color: FC6EA3
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.total-blocking-time.score
+        - sortorder: "5"
+          color: FFA726
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.cumulative-layout-shift.score
+        - sortorder: "6"
+          color: "000000"
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.desktop.score
+    - name: "Score Mobile"
+      graph_items:
+        - color: 1A7C11
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.first-contentful-paint.score
+        - sortorder: "1"
+          color: F63100
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.interactive.score
+        - sortorder: "2"
+          color: 2774A4
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.largest-contentful-paint.score
+        - sortorder: "3"
+          color: A54F10
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.speed-index.score
+        - sortorder: "4"
+          color: FC6EA3
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.total-blocking-time.score
+        - sortorder: "5"
+          color: FFA726
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.cumulative-layout-shift.score
+        - sortorder: "6"
+          color: "000000"
+          item:
+            host: "Template Pagespeed"
+            key: pagespeed.mobile.score
