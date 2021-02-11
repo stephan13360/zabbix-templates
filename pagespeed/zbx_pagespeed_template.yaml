@@ -1,6 +1,6 @@
 zabbix_export:
   version: "5.2"
-  date: "2021-02-11T12:55:36Z"
+  date: "2021-02-11T13:39:48Z"
   groups:
     - name: Templates/Custom
   templates:
@@ -25,7 +25,7 @@ zabbix_export:
                 - '$.lighthouseResult.audits["cumulative-layout-shift"].numericValue'
           master_item:
             key: pagespeed.desktop.raw
-        - name: "cumulative-layout-shift Score (Desktop)"
+        - name: "cumulative-layout-shift Score (Desktop, Weight: 5%)"
           type: DEPENDENT
           key: pagespeed.desktop.cumulative-layout-shift.score
           delay: "0"
@@ -58,7 +58,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.desktop.raw
-        - name: "first-contentful-paint Score (Desktop)"
+        - name: "first-contentful-paint Score (Desktop, Weight: 15%)"
           type: DEPENDENT
           key: pagespeed.desktop.first-contentful-paint.score
           delay: "0"
@@ -157,7 +157,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.desktop.raw
-        - name: "interactive Score (Desktop)"
+        - name: "interactive Score (Desktop, Weight: 15%)"
           type: DEPENDENT
           key: pagespeed.desktop.interactive.score
           delay: "0"
@@ -190,7 +190,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.desktop.raw
-        - name: "largest-contentful-paint Score (Desktop)"
+        - name: "largest-contentful-paint Score (Desktop, Weight: 25%)"
           type: DEPENDENT
           key: pagespeed.desktop.largest-contentful-paint.score
           delay: "0"
@@ -287,7 +287,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.desktop.raw
-        - name: "speed-index Score (Desktop)"
+        - name: "speed-index Score (Desktop, Weight: 15%)"
           type: DEPENDENT
           key: pagespeed.desktop.speed-index.score
           delay: "0"
@@ -320,7 +320,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.desktop.raw
-        - name: "total-blocking-time Score (Desktop)"
+        - name: "total-blocking-time Score (Desktop, Weight: 25%)"
           type: DEPENDENT
           key: pagespeed.desktop.total-blocking-time.score
           delay: "0"
@@ -349,7 +349,7 @@ zabbix_export:
                 - '$.lighthouseResult.audits["cumulative-layout-shift"].numericValue'
           master_item:
             key: pagespeed.mobile.raw
-        - name: "cumulative-layout-shift Score (Mobile)"
+        - name: "cumulative-layout-shift Score (Mobile, Weight: 5%)"
           type: DEPENDENT
           key: pagespeed.mobile.cumulative-layout-shift.score
           delay: "0"
@@ -382,7 +382,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.mobile.raw
-        - name: "first-contentful-paint Score (Mobile)"
+        - name: "first-contentful-paint Score (Mobile, Weight: 15%)"
           type: DEPENDENT
           key: pagespeed.mobile.first-contentful-paint.score
           delay: "0"
@@ -481,7 +481,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.mobile.raw
-        - name: "interactive Score (Mobile)"
+        - name: "interactive Score (Mobile, Weight: 15%)"
           type: DEPENDENT
           key: pagespeed.mobile.interactive.score
           delay: "0"
@@ -514,7 +514,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.mobile.raw
-        - name: "largest-contentful-paint Score (Mobile)"
+        - name: "largest-contentful-paint Score (Mobile, Weight: 25%)"
           type: DEPENDENT
           key: pagespeed.mobile.largest-contentful-paint.score
           delay: "0"
@@ -611,7 +611,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.mobile.raw
-        - name: "speed-index Score (Mobile)"
+        - name: "speed-index Score (Mobile, Weight: 15%)"
           type: DEPENDENT
           key: pagespeed.mobile.speed-index.score
           delay: "0"
@@ -644,7 +644,7 @@ zabbix_export:
                 - "0.001"
           master_item:
             key: pagespeed.mobile.raw
-        - name: "total-blocking-time Score (Mobile)"
+        - name: "total-blocking-time Score (Mobile, Weight: 25%)"
           type: DEPENDENT
           key: pagespeed.mobile.total-blocking-time.score
           delay: "0"
