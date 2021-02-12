@@ -1,11 +1,14 @@
 zabbix_export:
-  version: "5.2"
-  date: "2021-02-11T13:39:48Z"
+  version: "4.0"
+  date: "2021-02-12T12:49:34Z"
   groups:
     - name: Templates/Custom
   templates:
     - template: "Template Pagespeed"
       name: "Template Pagespeed"
+      description: |
+        Lighthouse performance scoring: https://web.dev/performance-scoring/
+        Lighthouse Scoring Calculator: https://googlechrome.github.io/lighthouse/scorecalc/
       groups:
         - name: Templates/Custom
       applications:
