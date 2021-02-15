@@ -1,12 +1,15 @@
 zabbix_export:
   version: "4.0"
-  date: "2021-02-12T12:49:34Z"
+  date: "2021-02-15T10:17:21Z"
   groups:
     - name: Templates/Custom
   templates:
-    - template: "Template Pagespeed"
-      name: "Template Pagespeed"
+    - template: "Template PageSpeed"
+      name: "Template PageSpeed"
       description: |
+        Current version: https://github.com/stephan13360/zabbix-templates/tree/main/pagespeed
+        Usage: https://www.sherbers.de/pagespeed-insights-automation-with-zabbix/
+
         Lighthouse performance scoring: https://web.dev/performance-scoring/
         Lighthouse Scoring Calculator: https://googlechrome.github.io/lighthouse/scorecalc/
       groups:
@@ -665,130 +668,133 @@ zabbix_export:
             key: pagespeed.mobile.raw
       macros:
         - macro: "{$GOOGLE_API_KEY}"
+          description: "Get your key here: https://developers.google.com/speed/docs/insights/v5/get-started"
         - macro: "{$PAGESPEED_NAME}"
+          description: "Fill this on the host level, not the template level"
         - macro: "{$PAGESPEED_URL}"
+          description: "Fill this on the host level, not the template level"
   graphs:
     - name: Desktop
       graph_items:
         - color: 1A7C11
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.first-contentful-paint
         - sortorder: "1"
           color: F63100
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.interactive
         - sortorder: "2"
           color: 2774A4
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.largest-contentful-paint
         - sortorder: "3"
           color: A54F10
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.speed-index
         - sortorder: "4"
           color: FC6EA3
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.total-blocking-time
     - name: Mobile
       graph_items:
         - color: 1A7C11
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.first-contentful-paint
         - sortorder: "1"
           color: F63100
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.interactive
         - sortorder: "2"
           color: 2774A4
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.largest-contentful-paint
         - sortorder: "3"
           color: A54F10
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.speed-index
         - sortorder: "4"
           color: FC6EA3
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.total-blocking-time
     - name: "Score Desktop"
       graph_items:
         - color: 1A7C11
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.first-contentful-paint.score
         - sortorder: "1"
           color: F63100
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.interactive.score
         - sortorder: "2"
           color: 2774A4
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.largest-contentful-paint
         - sortorder: "3"
           color: A54F10
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.speed-index.score
         - sortorder: "4"
           color: FC6EA3
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.total-blocking-time.score
         - sortorder: "5"
           color: FFA726
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.cumulative-layout-shift.score
         - sortorder: "6"
           color: "000000"
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.desktop.score
     - name: "Score Mobile"
       graph_items:
         - color: 1A7C11
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.first-contentful-paint.score
         - sortorder: "1"
           color: F63100
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.interactive.score
         - sortorder: "2"
           color: 2774A4
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.largest-contentful-paint.score
         - sortorder: "3"
           color: A54F10
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.speed-index.score
         - sortorder: "4"
           color: FC6EA3
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.total-blocking-time.score
         - sortorder: "5"
           color: FFA726
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.cumulative-layout-shift.score
         - sortorder: "6"
           color: "000000"
           item:
-            host: "Template Pagespeed"
+            host: "Template PageSpeed"
             key: pagespeed.mobile.score
